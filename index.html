@@ -158,6 +158,149 @@
             margin-bottom: 24px;
         }
         
+        .content-type-section {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .select {
+            position: relative;
+            min-width: 140px;
+        }
+        
+        .select-trigger {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            color: rgba(125, 211, 252, 1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+        
+        .select-trigger:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .select-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            display: none;
+            margin-top: 4px;
+        }
+        
+        .select-content.show {
+            display: block;
+            animation: slideDown 0.2s ease;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .select-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .select-item:hover {
+            background: rgba(56, 189, 248, 0.1);
+        }
+        
+        .tags-section {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .tag {
+            padding: 6px 12px;
+            background: rgba(56, 189, 248, 0.2);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 20px;
+            color: rgba(125, 211, 252, 1);
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .tag:hover {
+            background: rgba(56, 189, 248, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .tag.removable {
+            padding-right: 8px;
+        }
+        
+        .tag-remove {
+            margin-left: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .tag-input-container {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .tag-input {
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            color: white;
+            font-size: 12px;
+            width: 100px;
+        }
+        
+        .tag-input:focus {
+            outline: none;
+            border-color: rgba(56, 189, 248, 0.4);
+        }
+        
+        .tag-input::placeholder {
+            color: rgba(125, 211, 252, 0.5);
+        }
+        
+        .add-tag-btn {
+            padding: 6px 10px;
+            background: rgba(56, 189, 248, 0.2);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .add-tag-btn:hover {
+            background: rgba(56, 189, 248, 0.3);
+            transform: scale(1.05);
+        }
+        
         .textarea {
             width: 100%;
             min-height: 140px;
@@ -274,806 +417,59 @@
             font-size: 20px;
         }
         
-        .history-list {
-            max-height: 600px;
-            overflow-y: auto;
-        }
-        
-        .history-item {
-            backdrop-filter: blur(40px);
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 16px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            animation: slideIn 0.5s ease forwards;
-        }
-        
-        .history-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(56, 189, 248, 0.15);
-            transform: translateY(-2px) scale(1.01);
-        }
-        
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .item-content {
-            font-family: 'Monaco', 'Menlo', monospace;
-            color: rgba(255, 255, 255, 0.95);
-            line-height: 1.6;
-            margin-bottom: 12px;
-            word-break: break-word;
-        }
-        
-        .item-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: rgba(125, 211, 252, 0.4);
-            font-size: 12px;
-        }
-        
-        .item-actions {
-            display: flex;
-            gap: 8px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .history-item:hover .item-actions {
-            opacity: 1;
-        }
-        
-        .action-btn {
-            padding: 6px 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: white;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .action-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-        }
-        
-        .action-btn.copy {
-            background: rgba(34, 197, 94, 0.2);
-            border-color: rgba(34, 197, 94, 0.3);
-        }
-        
-        .action-btn.delete {
-            background: rgba(239, 68, 68, 0.2);
-            border-color: rgba(239, 68, 68, 0.3);
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: rgba(125, 211, 252, 0.5);
-            font-size: 18px;
-        }
-        
-        .toast {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 16px 24px;
-            background: rgba(34, 197, 94, 0.2);
-            border: 1px solid rgba(34, 197, 94, 0.3);
-            border-radius: 12px;
-            color: rgba(34, 197, 94, 1);
-            backdrop-filter: blur(20px);
-            transform: translateX(400px);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .toast.show {
-            transform: translateX(0);
-        }
-        
-        .settings-panel {
+        .filter-controls {
+            margin-top: 16px;
             display: none;
-            margin-top: 20px;
         }
         
-        .settings-panel.show {
+        .filter-controls.show {
             display: block;
             animation: slideIn 0.3s ease;
         }
         
-        .setting-item {
+        .filter-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .setting-input {
-            width: 80px;
-            padding: 8px 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 8px;
-            color: white;
-            text-align: center;
-        }
-        
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2.5rem;
-            }
-            .container {
-                padding: 16px;
-            }
-            .card {
-                padding: 24px 20px;
-            }
-            .controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .button {
-                justify-content: center;
-            }
-        }
-        
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: rgba(56, 189, 248, 0.05);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(6, 182, 212, 0.3));
-            border-radius: 4px;
-            backdrop-filter: blur(10px);
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.5), rgba(6, 182, 212, 0.5));
-        }
-        
-        ::selection {
-            background: rgba(56, 189, 248, 0.3);
-            color: white;
-        }
-    </style>
-</head>
-<body>
-    <div class="background">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-        <div class="blob blob3"></div>
-        <div class="blob floating1"></div>
-        <div class="blob floating2"></div>
-    </div>
-    
-    <div class="container">
-        <div class="header">
-            <h1 class="title">
-                <span class="sparkle">✨</span>
-                Clipboard
-                <span class="sparkle">✨</span>
-            </h1>
-            <p class="subtitle">Liquid Design • Tech Aesthetic</p>
-        </div>
-        
-        <!-- Input Section -->
-        <div class="card">
-            <div class="input-section">
-                <textarea 
-                    id="textInput" 
-                    class="textarea" 
-                    placeholder="Enter your content... (Press Enter to save, Shift+Enter for new line)"
-                ></textarea>
-            </div>
-            
-            <div class="controls">
-                <div class="char-count">
-                    <span>📄</span>
-                    <span id="charCount">0 characters</span>
-                </div>
-                
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    <button id="settingsBtn" class="button">
-                        <span>⚙️</span>
-                        Settings
-                    </button>
-                    
-                    <button id="exportBtn" class="button">
-                        <span>📦</span>
-                        Export
-                    </button>
-                    
-                    <button id="saveBtn" class="button primary">
-                        <span>💾</span>
-                        Save
-                    </button>
-                </div>
-            </div>
-            
-            <div id="settingsPanel" class="settings-panel">
-                <div class="setting-item">
-                    <label>Maximum entries:</label>
-                    <input type="number" id="maxItems" class="setting-input" value="50" min="1" max="200">
-                </div>
-                
-                <div class="setting-item">
-                    <span>Current entries: <span id="currentCount">0</span></span>
-                    <button id="clearAllBtn" class="button delete">
-                        <span>🗑️</span>
-                        Clear All
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Search Section -->
-        <div class="card">
-            <div class="search-section">
-                <div class="search-container">
-                    <div class="search-icon">🔍</div>
-                    <input 
-                        type="text" 
-                        id="searchInput" 
-                        class="search-input" 
-                        placeholder="Search your clipboard... (Ctrl+F)"
-                    >
-                </div>
-            </div>
-        </div>
-        
-        <!-- History List -->
-        <div class="card">
-            <div id="historyList" class="history-list">
-                <div class="empty-state">
-                    ✨ No entries yet
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div id="toast" class="toast"></div>
-    
-    <script>
-        class ClipboardApp {
-            constructor() {
-                this.items = JSON.parse(localStorage.getItem('clipboard-items') || '[]');
-                this.maxItems = parseInt(localStorage.getItem('clipboard-max-items') || '50');
-                this.init();
-            }
-            
-            init() {
-                this.bindEvents();
-                this.updateUI();
-                this.updateCharCount();
-                
-                // Set max items input
-                document.getElementById('maxItems').value = this.maxItems;
-            }
-            
-            bindEvents() {
-                const textInput = document.getElementById('textInput');
-                const saveBtn = document.getElementById('saveBtn');
-                const searchInput = document.getElementById('searchInput');
-                const settingsBtn = document.getElementById('settingsBtn');
-                const exportBtn = document.getElementById('exportBtn');
-                const clearAllBtn = document.getElementById('clearAllBtn');
-                const maxItemsInput = document.getElementById('maxItems');
-                
-                // Text input events
-                textInput.addEventListener('input', () => this.updateCharCount());
-                textInput.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        this.saveText();
-                    }
-                });
-                
-                // Button events
-                saveBtn.addEventListener('click', () => this.saveText());
-                searchInput.addEventListener('input', (e) => this.filterItems(e.target.value));
-                settingsBtn.addEventListener('click', () => this.toggleSettings());
-                exportBtn.addEventListener('click', () => this.exportData());
-                clearAllBtn.addEventListener('click', () => this.clearAll());
-                maxItemsInput.addEventListener('change', (e) => this.updateMaxItems(e.target.value));
-                
-                // Keyboard shortcuts
-                document.addEventListener('keydown', (e) => {
-                    if (e.ctrlKey && e.key === 'f') {
-                        e.preventDefault();
-                        searchInput.focus();
-                    }
-                });
-            }
-            
-            updateCharCount() {
-                const textInput = document.getElementById('textInput');
-                const charCount = document.getElementById('charCount');
-                const length = textInput.value.length;
-                charCount.textContent = `${length} characters`;
-                
-                // Update save button state
-                const saveBtn = document.getElementById('saveBtn');
-                saveBtn.disabled = length === 0;
-            }
-            
-            saveText() {
-                const textInput = document.getElementById('textInput');
-                const text = textInput.value.trim();
-                
-                if (!text) return;
-                
-                const newItem = {
-                    id: Date.now().toString(),
-                    text: text,
-                    timestamp: Date.now(),
-                    preview: text.length > 50 ? text.substring(0, 50) + '...' : text
-                };
-                
-                // Remove duplicate if exists
-                this.items = this.items.filter(item => item.text !== newItem.text);
-                
-                // Add to beginning and limit items
-                this.items.unshift(newItem);
-                this.items = this.items.slice(0, this.maxItems);
-                
-                // Save to localStorage
-                localStorage.setItem('clipboard-items', JSON.stringify(this.items));
-                
-                // Clear input and update UI
-                textInput.value = '';
-                this.updateCharCount();
-                this.updateUI();
-                
-                this.showToast('✨ Content saved successfully');
-            }
-            
-            async copyToClipboard(item) {
-                try {
-                    await navigator.clipboard.writeText(item.text);
-                    this.showToast('🎉 Copied to clipboard');
-                } catch (err) {
-                    this.showToast('❌ Copy failed, please try again', 'error');
-                }
-            }
-            
-            deleteItem(id) {
-                this.items = this.items.filter(item => item.id !== id);
-                localStorage.setItem('clipboard-items', JSON.stringify(this.items));
-                this.updateUI();
-                this.showToast('🗑️ Entry deleted');
-            }
-            
-            filterItems(query) {
-                const filteredItems = this.items.filter(item => 
-                    item.text.toLowerCase().includes(query.toLowerCase())
-                );
-                this.renderItems(filteredItems);
-            }
-            
-            updateUI() {
-                this.renderItems(this.items);
-                document.getElementById('currentCount').textContent = this.items.length;
-                
-                // Update export button state
-                const exportBtn = document.getElementById('exportBtn');
-                exportBtn.disabled = this.items.length === 0;
-            }
-            
-            renderItems(items) {
-                const historyList = document.getElementById('historyList');
-                
-                if (items.length === 0) {
-                    historyList.innerHTML = '<div class="empty-state">✨ No entries yet</div>';
-                    return;
-                }
-                
-                historyList.innerHTML = items.map((item, index) => `
-                    <div class="history-item" style="animation-delay: ${index * 50}ms" ondblclick="app.copyToClipboard(${JSON.stringify(item).replace(/"/g, '&quot;')})">
-                        <div class="item-content">${this.escapeHtml(item.preview)}</div>
-                        <div class="item-meta">
-                            <div>
-                                <span>🕒</span>
-                                ${this.formatTime(item.timestamp)}
-                                <span style="margin-left: 12px;">📄 ${item.text.length} chars</span>
-                            </div>
-                            <div class="item-actions">
-                                <button class="action-btn copy" onclick="app.copyToClipboard(${JSON.stringify(item).replace(/"/g, '&quot;')})">
-                                    📋 Copy
-                                </button>
-                                <button class="action-btn delete" onclick="app.deleteItem('${item.id}')">
-                                    🗑️ Delete
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            }
-            
-            formatTime(timestamp) {
-                const now = Date.now();
-                const diff = now - timestamp;
-                const minutes = Math.floor(diff / 60000);
-                const hours = Math.floor(diff / 3600000);
-                const days = Math.floor(diff / 86400000);
-                
-                if (days > 0) return `${days}d ago`;
-                if (hours > 0) return `${hours}h ago`;
-                if (minutes > 0) return `${minutes}m ago`;
-                return 'now';
-            }
-            
-            escapeHtml(text) {
-                const div = document.createElement('div');
-                div.textContent = text;
-                return div.innerHTML;
-            }
-            
-            toggleSettings() {
-                const panel = document.getElementById('settingsPanel');
-                panel.classList.toggle('show');
-            }
-            
-            updateMaxItems(value) {
-                this.maxItems = Math.max(1, parseInt(value) || 50);
-                localStorage.setItem('clipboard-max-items', this.maxItems.toString());
-                
-                // Trim items if necessary
-                if (this.items.length > this.maxItems) {
-                    this.items = this.items.slice(0, this.maxItems);
-                    localStorage.setItem('clipboard-items', JSON.stringify(this.items));
-                    this.updateUI();
-                }
-            }
-            
-            clearAll() {
-                if (this.items.length === 0) return;
-                
-                if (confirm('Are you sure you want to clear all entries?')) {
-                    this.items = [];
-                    localStorage.setItem('clipboard-items', JSON.stringify(this.items));
-                    this.updateUI();
-                    this.showToast('🧹 All entries cleared');
-                }
-            }
-            
-            exportData() {
-                if (this.items.length === 0) return;
-                
-                const data = {
-                    items: this.items,
-                    exportDate: new Date().toISOString(),
-                    version: '2.0'
-                };
-                
-                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `clipboard-export-${new Date().toISOString().split('T')[0]}.json`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-                
-                this.showToast('📦 Data exported successfully');
-            }
-            
-            showToast(message, type = 'success') {
-                const toast = document.getElementById('toast');
-                toast.textContent = message;
-                toast.className = `toast ${type}`;
-                toast.classList.add('show');
-                
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 3000);
-            }
-        }
-        
-        // Initialize app
-        const app = new ClipboardApp();
-        
-        // Focus on text input when page loads
-        window.addEventListener('load', () => {
-            document.getElementById('textInput').focus();
-        });
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clipboard - Liquid Design Tech Aesthetic</title>
-    <meta name="description" content="A beautiful clipboard application with Apple's liquid design language and tech sky blue aesthetics.">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #0c4a6e 50%, #1e293b 100%);
-            min-height: 100vh;
-            color: white;
-            overflow-x: hidden;
-        }
-        
-        .background {
-            position: fixed;
-            inset: 0;
-            overflow: hidden;
-            z-index: 0;
-        }
-        
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            mix-blend-mode: multiply;
-            animation: blob 10s infinite;
-        }
-        
-        .blob1 {
-            top: -200px;
-            right: -200px;
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(6, 182, 212, 0.25));
-        }
-        
-        .blob2 {
-            bottom: -200px;
-            left: -200px;
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(56, 189, 248, 0.25));
-            animation-delay: 2s;
-        }
-        
-        .blob3 {
-            top: 200px;
-            left: 200px;
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(59, 130, 246, 0.25));
-            animation-delay: 4s;
-        }
-        
-        .floating1 {
-            top: 80px;
-            right: 80px;
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, rgba(125, 211, 252, 0.2), rgba(6, 182, 212, 0.2));
-            animation: pulse 3s infinite;
-        }
-        
-        .floating2 {
-            bottom: 80px;
-            left: 80px;
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(56, 189, 248, 0.2));
-            animation: pulse 3s infinite;
-            animation-delay: 1s;
-        }
-        
-        @keyframes blob {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(50px, -70px) scale(1.1); }
-            50% { transform: translate(-40px, 40px) scale(0.9); }
-            75% { transform: translate(30px, -30px) scale(1.05); }
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-        
-        .container {
-            position: relative;
-            z-index: 10;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-top: 40px;
-        }
-        
-        .title {
-            font-size: 4rem;
-            font-weight: 200;
-            background: linear-gradient(135deg, #7dd3fc, #06b6d4, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 16px;
-            letter-spacing: 0.05em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-wrap: wrap;
             gap: 12px;
         }
         
-        .sparkle {
-            animation: sparkle 2s infinite;
-            font-size: 2rem;
-        }
-        
-        @keyframes sparkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.1); }
-        }
-        
-        .subtitle {
-            color: rgba(125, 211, 252, 0.8);
-            font-size: 1.25rem;
-            font-weight: 300;
-            letter-spacing: 0.025em;
-        }
-        
-        .card {
-            backdrop-filter: blur(40px);
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 32px;
-            margin-bottom: 32px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            transition: all 0.5s ease;
-        }
-        
-        .card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(56, 189, 248, 0.2);
-        }
-        
-        .input-section {
-            margin-bottom: 24px;
-        }
-        
-        .textarea {
-            width: 100%;
-            min-height: 140px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(56, 189, 248, 0.15);
-            border-radius: 16px;
-            padding: 16px;
-            color: white;
-            font-size: 16px;
-            font-family: 'Monaco', 'Menlo', monospace;
-            resize: vertical;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-        
-        .textarea:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
-        }
-        
-        .textarea::placeholder {
-            color: rgba(125, 211, 252, 0.5);
-        }
-        
-        .controls {
+        .active-filters {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 12px;
             flex-wrap: wrap;
-            gap: 16px;
         }
         
-        .char-count {
+        .filter-label {
             color: rgba(125, 211, 252, 0.6);
             font-size: 14px;
+        }
+        
+        .filter-actions {
             display: flex;
-            align-items: center;
             gap: 8px;
         }
         
-        .button {
-            padding: 12px 24px;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(6, 182, 212, 0.3));
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 12px;
+        .filter-btn {
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
             color: white;
-            font-weight: 500;
+            font-size: 12px;
             cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .button:hover {
-            transform: translateY(-2px) scale(1.05);
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(6, 182, 212, 0.4));
-            box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.3);
-        }
-        
-        .button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .button.primary {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(6, 182, 212, 0.4));
-            border-color: rgba(56, 189, 248, 0.3);
-        }
-        
-        .search-section {
-            margin-bottom: 24px;
-        }
-        
-        .search-input {
-            width: 100%;
-            height: 56px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(56, 189, 248, 0.15);
-            border-radius: 16px;
-            padding: 0 20px 0 56px;
-            color: white;
-            font-size: 16px;
-            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
         
-        .search-input:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.06);
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .filter-btn.active {
+            background: rgba(56, 189, 248, 0.3);
             border-color: rgba(56, 189, 248, 0.3);
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
-        }
-        
-        .search-input::placeholder {
-            color: rgba(125, 211, 252, 0.5);
-        }
-        
-        .search-container {
-            position: relative;
-        }
-        
-        .search-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: rgba(125, 211, 252, 0.6);
-            font-size: 20px;
         }
         
         .history-list {
@@ -1110,12 +506,58 @@
             }
         }
         
+        .item-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .item-type-icon {
+            color: rgba(125, 211, 252, 0.8);
+            font-size: 16px;
+        }
+        
+        .item-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        
+        .item-tag {
+            padding: 2px 8px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            color: rgba(125, 211, 252, 0.9);
+            font-size: 10px;
+        }
+        
         .item-content {
             font-family: 'Monaco', 'Menlo', monospace;
             color: rgba(255, 255, 255, 0.95);
             line-height: 1.6;
             margin-bottom: 12px;
             word-break: break-word;
+        }
+        
+        .item-content.code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            color: rgba(34, 197, 94, 0.9);
+        }
+        
+        .item-content.url {
+            color: rgba(125, 211, 252, 0.9);
+            text-decoration: underline;
+            text-decoration-color: rgba(125, 211, 252, 0.5);
+        }
+        
+        .item-content.markdown .markdown-header {
+            font-weight: bold;
+            color: rgba(125, 211, 252, 0.9);
         }
         
         .item-meta {
@@ -1233,6 +675,13 @@
             .button {
                 justify-content: center;
             }
+            .content-type-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .tags-section {
+                justify-content: center;
+            }
         }
         
         ::-webkit-scrollbar {
@@ -1281,6 +730,46 @@
         
         <!-- Input Section -->
         <div class="card">
+            <!-- Content Type & Tags Section -->
+            <div class="content-type-section">
+                <div class="select">
+                    <div class="select-trigger" id="contentTypeSelect">
+                        <span id="contentTypeText">📝 Text</span>
+                        <span>▼</span>
+                    </div>
+                    <div class="select-content" id="contentTypeOptions">
+                        <div class="select-item" data-value="text">📝 Text</div>
+                        <div class="select-item" data-value="markdown">📋 Markdown</div>
+                        <div class="select-item" data-value="code">💻 Code</div>
+                        <div class="select-item" data-value="url">🔗 URL</div>
+                    </div>
+                </div>
+                
+                <div class="tags-section">
+                    <div id="selectedTags"></div>
+                    
+                    <div class="select">
+                        <div class="select-trigger" id="tagSelect">
+                            <span>🏷️ Add Tag</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="select-content" id="tagOptions">
+                            <div class="select-item" data-value="Work">🏢 Work</div>
+                            <div class="select-item" data-value="Personal">👤 Personal</div>
+                            <div class="select-item" data-value="Code">💻 Code</div>
+                            <div class="select-item" data-value="Links">🔗 Links</div>
+                            <div class="select-item" data-value="Notes">📝 Notes</div>
+                            <div class="select-item" data-value="Temp">⏰ Temp</div>
+                        </div>
+                    </div>
+                    
+                    <div class="tag-input-container">
+                        <input type="text" id="customTagInput" class="tag-input" placeholder="Custom tag">
+                        <button class="add-tag-btn" id="addCustomTagBtn">✨</button>
+                    </div>
+                </div>
+            </div>
+            
             <div class="input-section">
                 <textarea 
                     id="textInput" 
@@ -1342,6 +831,20 @@
                     >
                 </div>
             </div>
+            
+            <div id="filterControls" class="filter-controls">
+                <div class="filter-row">
+                    <div class="active-filters">
+                        <span class="filter-label">Active filters:</span>
+                        <div id="activeFilterTags"></div>
+                    </div>
+                    
+                    <div class="filter-actions">
+                        <button id="toggleFilterBtn" class="filter-btn">Filter OFF</button>
+                        <button id="clearFiltersBtn" class="filter-btn">Clear All</button>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- History List -->
@@ -1361,6 +864,10 @@
             constructor() {
                 this.items = JSON.parse(localStorage.getItem('clipboard-items') || '[]');
                 this.maxItems = parseInt(localStorage.getItem('clipboard-max-items') || '50');
+                this.allTags = JSON.parse(localStorage.getItem('clipboard-tags') || '["Work", "Personal", "Code", "Links", "Notes", "Temp"]');
+                this.selectedTags = [];
+                this.contentType = 'text';
+                this.isFilterActive = false;
                 this.init();
             }
             
@@ -1371,6 +878,13 @@
                 
                 // Set max items input
                 document.getElementById('maxItems').value = this.maxItems;
+                
+                // Close dropdowns when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!e.target.closest('.select')) {
+                        this.closeAllDropdowns();
+                    }
+                });
             }
             
             bindEvents() {
@@ -1381,6 +895,10 @@
                 const exportBtn = document.getElementById('exportBtn');
                 const clearAllBtn = document.getElementById('clearAllBtn');
                 const maxItemsInput = document.getElementById('maxItems');
+                const customTagInput = document.getElementById('customTagInput');
+                const addCustomTagBtn = document.getElementById('addCustomTagBtn');
+                const toggleFilterBtn = document.getElementById('toggleFilterBtn');
+                const clearFiltersBtn = document.getElementById('clearFiltersBtn');
                 
                 // Text input events
                 textInput.addEventListener('input', () => this.updateCharCount());
@@ -1399,6 +917,21 @@
                 clearAllBtn.addEventListener('click', () => this.clearAll());
                 maxItemsInput.addEventListener('change', (e) => this.updateMaxItems(e.target.value));
                 
+                // Tag events
+                customTagInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        this.addCustomTag();
+                    }
+                });
+                addCustomTagBtn.addEventListener('click', () => this.addCustomTag());
+                
+                // Filter events
+                toggleFilterBtn.addEventListener('click', () => this.toggleFilter());
+                clearFiltersBtn.addEventListener('click', () => this.clearAllFilters());
+                
+                // Dropdown events
+                this.bindDropdownEvents();
+                
                 // Keyboard shortcuts
                 document.addEventListener('keydown', (e) => {
                     if (e.ctrlKey && e.key === 'f') {
@@ -1406,6 +939,140 @@
                         searchInput.focus();
                     }
                 });
+            }
+            
+            bindDropdownEvents() {
+                // Content type dropdown
+                const contentTypeSelect = document.getElementById('contentTypeSelect');
+                const contentTypeOptions = document.getElementById('contentTypeOptions');
+                
+                contentTypeSelect.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.toggleDropdown('contentTypeOptions');
+                });
+                
+                contentTypeOptions.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('select-item')) {
+                        this.contentType = e.target.dataset.value;
+                        document.getElementById('contentTypeText').textContent = e.target.textContent;
+                        this.closeAllDropdowns();
+                    }
+                });
+                
+                // Tag dropdown
+                const tagSelect = document.getElementById('tagSelect');
+                const tagOptions = document.getElementById('tagOptions');
+                
+                tagSelect.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.toggleDropdown('tagOptions');
+                });
+                
+                tagOptions.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('select-item')) {
+                        this.addTag(e.target.dataset.value);
+                        this.closeAllDropdowns();
+                    }
+                });
+            }
+            
+            toggleDropdown(id) {
+                this.closeAllDropdowns();
+                const dropdown = document.getElementById(id);
+                dropdown.classList.add('show');
+            }
+            
+            closeAllDropdowns() {
+                document.querySelectorAll('.select-content').forEach(dropdown => {
+                    dropdown.classList.remove('show');
+                });
+            }
+            
+            addTag(tag) {
+                if (!this.selectedTags.includes(tag)) {
+                    this.selectedTags.push(tag);
+                    this.updateSelectedTags();
+                    
+                    if (!this.allTags.includes(tag)) {
+                        this.allTags.push(tag);
+                        this.saveAllTags();
+                        this.updateTagOptions();
+                    }
+                }
+            }
+            
+            removeTag(tag) {
+                this.selectedTags = this.selectedTags.filter(t => t !== tag);
+                this.updateSelectedTags();
+                this.updateFilterControls();
+            }
+            
+            addCustomTag() {
+                const input = document.getElementById('customTagInput');
+                const tag = input.value.trim();
+                
+                if (tag && !this.selectedTags.includes(tag)) {
+                    this.addTag(tag);
+                    input.value = '';
+                }
+            }
+            
+            updateSelectedTags() {
+                const container = document.getElementById('selectedTags');
+                container.innerHTML = this.selectedTags.map(tag => `
+                    <div class="tag removable">
+                        ${tag}
+                        <span class="tag-remove" onclick="app.removeTag('${tag}')">✕</span>
+                    </div>
+                `).join('');
+                
+                this.updateFilterControls();
+            }
+            
+            updateFilterControls() {
+                const filterControls = document.getElementById('filterControls');
+                const activeFilterTags = document.getElementById('activeFilterTags');
+                const toggleFilterBtn = document.getElementById('toggleFilterBtn');
+                
+                if (this.selectedTags.length > 0) {
+                    filterControls.classList.add('show');
+                    
+                    activeFilterTags.innerHTML = this.selectedTags.map(tag => `
+                        <div class="tag" onclick="app.removeTag('${tag}')">
+                            ${tag} ✕
+                        </div>
+                    `).join('');
+                    
+                    toggleFilterBtn.textContent = this.isFilterActive ? 'Filter ON' : 'Filter OFF';
+                    toggleFilterBtn.classList.toggle('active', this.isFilterActive);
+                } else {
+                    filterControls.classList.remove('show');
+                    this.isFilterActive = false;
+                }
+            }
+            
+            toggleFilter() {
+                this.isFilterActive = !this.isFilterActive;
+                this.updateFilterControls();
+                this.updateUI();
+            }
+            
+            clearAllFilters() {
+                this.selectedTags = [];
+                this.isFilterActive = false;
+                this.updateSelectedTags();
+                this.updateUI();
+            }
+            
+            updateTagOptions() {
+                const tagOptions = document.getElementById('tagOptions');
+                tagOptions.innerHTML = this.allTags.map(tag => `
+                    <div class="select-item" data-value="${tag}">🏷️ ${tag}</div>
+                `).join('');
+            }
+            
+            saveAllTags() {
+                localStorage.setItem('clipboard-tags', JSON.stringify(this.allTags));
             }
             
             updateCharCount() {
@@ -1419,17 +1086,28 @@
                 saveBtn.disabled = length === 0;
             }
             
+            detectContentType(text) {
+                if (text.match(/^https?:\/\//)) return 'url';
+                if (text.includes('```') || text.includes('function') || text.includes('const ') || text.includes('import ')) return 'code';
+                if (text.includes('#') || text.includes('**') || text.includes('*') || text.includes('[') || text.includes(']')) return 'markdown';
+                return 'text';
+            }
+            
             saveText() {
                 const textInput = document.getElementById('textInput');
                 const text = textInput.value.trim();
                 
                 if (!text) return;
                 
+                const detectedType = this.contentType === 'text' ? this.detectContentType(text) : this.contentType;
+                
                 const newItem = {
                     id: Date.now().toString(),
                     text: text,
                     timestamp: Date.now(),
-                    preview: text.length > 50 ? text.substring(0, 50) + '...' : text
+                    preview: text.length > 50 ? text.substring(0, 50) + '...' : text,
+                    tags: [...this.selectedTags],
+                    type: detectedType
                 };
                 
                 // Remove duplicate if exists
@@ -1442,8 +1120,12 @@
                 // Save to localStorage
                 localStorage.setItem('clipboard-items', JSON.stringify(this.items));
                 
-                // Clear input and update UI
+                // Clear input and reset
                 textInput.value = '';
+                this.selectedTags = [];
+                this.contentType = 'text';
+                document.getElementById('contentTypeText').textContent = '📝 Text';
+                this.updateSelectedTags();
                 this.updateCharCount();
                 this.updateUI();
                 
@@ -1467,14 +1149,23 @@
             }
             
             filterItems(query) {
-                const filteredItems = this.items.filter(item => 
-                    item.text.toLowerCase().includes(query.toLowerCase())
-                );
+                const filteredItems = this.items.filter(item => {
+                    const matchesSearch = item.text.toLowerCase().includes(query.toLowerCase());
+                    const matchesTags = !this.isFilterActive || this.selectedTags.length === 0 || 
+                                      this.selectedTags.some(tag => item.tags.includes(tag));
+                    return matchesSearch && matchesTags;
+                });
                 this.renderItems(filteredItems);
             }
             
             updateUI() {
-                this.renderItems(this.items);
+                const filteredItems = this.items.filter(item => {
+                    const matchesTags = !this.isFilterActive || this.selectedTags.length === 0 || 
+                                      this.selectedTags.some(tag => item.tags.includes(tag));
+                    return matchesTags;
+                });
+                
+                this.renderItems(filteredItems);
                 document.getElementById('currentCount').textContent = this.items.length;
                 
                 // Update export button state
@@ -1490,26 +1181,52 @@
                     return;
                 }
                 
-                historyList.innerHTML = items.map((item, index) => `
-                    <div class="history-item" style="animation-delay: ${index * 50}ms" ondblclick="app.copyToClipboard(${JSON.stringify(item).replace(/"/g, '&quot;')})">
-                        <div class="item-content">${this.escapeHtml(item.preview)}</div>
-                        <div class="item-meta">
-                            <div>
-                                <span>🕒</span>
-                                ${this.formatTime(item.timestamp)}
-                                <span style="margin-left: 12px;">📄 ${item.text.length} chars</span>
+                historyList.innerHTML = items.map((item, index) => {
+                    const typeIcons = {
+                        text: '📝',
+                        markdown: '📋',
+                        code: '💻',
+                        url: '🔗'
+                    };
+                    
+                    const contentClass = item.type === 'code' ? 'code' : 
+                                       item.type === 'url' ? 'url' : 
+                                       item.type === 'markdown' ? 'markdown' : '';
+                    
+                    let contentHtml = this.escapeHtml(item.preview);
+                    if (item.type === 'markdown' && item.text.includes('#')) {
+                        contentHtml = contentHtml.split('\n').map(line => 
+                            line.startsWith('#') ? `<div class="markdown-header">${line}</div>` : line
+                        ).join('\n');
+                    }
+                    
+                    return `
+                        <div class="history-item" style="animation-delay: ${index * 50}ms" ondblclick="app.copyToClipboard(${JSON.stringify(item).replace(/"/g, '&quot;')})">
+                            <div class="item-header">
+                                <span class="item-type-icon">${typeIcons[item.type]}</span>
+                                <div class="item-tags">
+                                    ${item.tags.map(tag => `<span class="item-tag">${tag}</span>`).join('')}
+                                </div>
                             </div>
-                            <div class="item-actions">
-                                <button class="action-btn copy" onclick="app.copyToClipboard(${JSON.stringify(item).replace(/"/g, '&quot;')})">
-                                    📋 Copy
-                                </button>
-                                <button class="action-btn delete" onclick="app.deleteItem('${item.id}')">
-                                    🗑️ Delete
-                                </button>
+                            <div class="item-content ${contentClass}">${contentHtml}</div>
+                            <div class="item-meta">
+                                <div>
+                                    <span>🕒</span>
+                                    ${this.formatTime(item.timestamp)}
+                                    <span style="margin-left: 12px;">📄 ${item.text.length} chars</span>
+                                </div>
+                                <div class="item-actions">
+                                    <button class="action-btn copy" onclick="app.copyToClipboard(${JSON.stringify(item).replace(/"/g, '&quot;')})">
+                                        📋 Copy
+                                    </button>
+                                    <button class="action-btn delete" onclick="app.deleteItem('${item.id}')">
+                                        🗑️ Delete
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                `).join('');
+                    `;
+                }).join('');
             }
             
             formatTime(timestamp) {
@@ -1564,6 +1281,7 @@
                 
                 const data = {
                     items: this.items,
+                    tags: this.allTags,
                     exportDate: new Date().toISOString(),
                     version: '2.0'
                 };
