@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard - Liquid Design Tech Aesthetic</title>
+    <meta name="description" content="A beautiful clipboard application with Apple's liquid design language and tech sky blue aesthetics.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #0c4a6e 50%, #1e293b 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .background {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            mix-blend-mode: multiply;
+            animation: blob 10s infinite;
+        }
+        
+        .blob1 {
+            top: -200px;
+            right: -200px;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(6, 182, 212, 0.3));
+        }
+        
+        .blob2 {
+            bottom: -200px;
+            left: -200px;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(56, 189, 248, 0.3));
+            animation-delay: 2s;
+        }
+        
+        .blob3 {
+            top: 200px;
+            left: 200px;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.3));
+            animation-delay: 4s;
+        }
+        
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(50px, -70px) scale(1.1); }
+            50% { transform: translate(-40px, 40px) scale(0.9); }
+            75% { transform: translate(30px, -30px) scale(1.05); }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 600px;
+            margin: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .title {
+            font-size: 4rem;
+            font-weight: 200;
+            background: linear-gradient(135deg, #7dd3fc, #06b6d4, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 0.05em;
+        }
+        
+        .subtitle {
+            color: rgba(125, 211, 252, 0.8);
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 32px;
+            letter-spacing: 0.025em;
+        }
+        
+        .description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.3), rgba(6, 182, 212, 0.3));
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 16px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px) scale(1.05);
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.4), rgba(6, 182, 212, 0.4));
+            box-shadow: 0 20px 40px -12px rgba(56, 189, 248, 0.3);
+        }
+        
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 2s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            .container {
+                padding: 32px 24px;
+                margin: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+    
+    <div class="container">
+        <h1 class="title">
+            <span class="sparkle">✨</span>
+            Clipboard
+            <span class="sparkle">✨</span>
+        </h1>
+        <p class="subtitle">Liquid Design • Tech Aesthetic</p>
+        <p class="description">
+            A beautiful clipboard application with Apple's liquid design language and tech sky blue aesthetics. 
+            Features tag categorization, rich text support, and seamless user experience.
+        </p>
+        <a href="/app" class="button">Launch Application</a>
+    </div>
+    
+    <script>
+        // Auto-redirect after 3 seconds if user doesn't click
+        setTimeout(() => {
+            if (document.visibilityState === 'visible') {
+                window.location.href = '/app';
+            }
+        }, 3000);
+        
+        // Handle click on launch button
+        document.querySelector('.button').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = '/app';
+        });
+    </script>
+</body>
+</html>
